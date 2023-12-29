@@ -108,7 +108,8 @@ namespace Tetris
 
                 // Load the background music file
                 backgroundMusic = new SoundPlayer();
-                backgroundMusic.SoundLocation = "D:\\Downloads\\Tetris music.wav";
+                backgroundMusic.SoundLocation = "D:\\Downloads\\Tetris music.wav"; // Music Source "https://www.youtube.com/watch?v=NmCCQxVBfyM", Download in .wav format in your pc to hear the music
+                // Copy paste the directory of the .wav file and insert it in the SoundLocation
                 backgroundMusic.Load();
                 backgroundMusic.PlayLooping(); // Start playing the background music in a loop
 
