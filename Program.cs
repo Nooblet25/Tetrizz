@@ -524,12 +524,19 @@ namespace Tetris
 
                 Console.Clear(); // Clear the console
 
-                Console.WriteLine(" _____                                            ");
-                Console.WriteLine("|  __ \\                                           ");
-                Console.WriteLine("| |  \\/ __ _ _ __ ___   ___    _____   _____ _ __ ");
-                Console.WriteLine("| | __ / _` | '_ ` _ \\ / _ \\  / _ \\ \\ / / _ \\ '__|");
-                Console.WriteLine("| |_\\ \\ (_| | | | | | |  __/ | (_) \\ V /  __/ |   ");
-                Console.WriteLine(" \\____/\\__,_|_| |_| |_|\\___|  \\___/ \\_/ \\___|_|   ");
+            
+                Console.WriteLine("             ██████╗  █████╗ ██    ██╗█████╗");
+                Console.WriteLine("            ██╔════╝ ██╔══██╗███  ███║██╔══╝");
+                Console.WriteLine("            ██║  ███╗███████║██╔██═██║█████╗");
+                Console.WriteLine("            ██║   ██║██╔══██║██║   ██║██╔══╝");
+                Console.WriteLine("            ╚██████╔╝██║  ██║██║   ██║█████╗");
+                Console.WriteLine("             ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝╚════╝");
+                Console.WriteLine("              ██████╗██╗  ██╗█████╗█████╗");
+                Console.WriteLine("              ██  ██║██║  ██║██╔══╝██╔═██╗");
+                Console.WriteLine("              ██  ██║██║  ██║█████╗█████╔╝");
+                Console.WriteLine("              ██  ██║╚██╗██╔╝██╔══╝██╔═██╗");
+                Console.WriteLine("              ██████║ ╚███╔╝ █████╗██║ ██║");
+                Console.WriteLine("              ╚═════╝  ╚══╝  ╚════╝╚═╝ ╚═╝");
                 Console.WriteLine("Score: " + score);
                 Console.WriteLine();
                 Console.WriteLine("Press 'R' to restart or 'Q' to quit.");
