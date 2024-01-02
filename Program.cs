@@ -351,15 +351,16 @@ namespace Tetris
                 return next;
             }
             static Dictionary<int, string> controlInfo = new Dictionary<int, string>
-        {
-            { 1, "Controls:" },
-            { 2, "       [A] or [←] move left" },
-            { 3, "       [D] or [→] move right" },
-            { 4, "       [S] or [↓] fall faster" },
-            { 5, "       [Spacebar] hard drop " },
-            { 6, "       [Enter] Hold Block" },
-            { 7, "       [R] Restart" },
-        };
+            {
+                { 0, "Controls:" },
+                { 1, " [←] - Left" },
+                { 2, " [→] - Right" },
+                { 3, " [↑] - Rotate" },
+                { 4, " [↓] - Soft Drop" },
+                { 5, " [Spc] - Hard Drop" },
+                { 6, " [Enter] - Hold" },
+                { 7, " [R] - Restart" },
+            };
             static string GetControlChar(int y)
             {
                 if (controlInfo.TryGetValue(y, out var control))
