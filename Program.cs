@@ -50,7 +50,7 @@ namespace Tetris
             };
             */
 
-            readonly static string characters = "OILJSZT";
+            readonly static string characters = "$*#*+;=";
             readonly static int[,,,] positions =
             {
         {
@@ -159,25 +159,15 @@ namespace Tetris
                 Console.Clear(); // Clear the console
 
                 // Display game title and information
-                Console.WriteLine("             ████████╗███████╗████████╗██████╗ ██╗███████╗███████╗");
-                Console.WriteLine("             ╚══██╔══╝██╔════╝╚══██╔══╝██╔══██╗██║╚══███╔╝╚══███╔╝");
-                Console.WriteLine("                ██║   █████╗     ██║   ██████╔╝██║  ███╔╝   ███╔╝ ");
-                Console.WriteLine("                ██║   ██╔══╝     ██║   ██╔══██╗██║ ███╔╝   ███╔╝");
-                Console.WriteLine("                ██║   ███████╗   ██║   ██║  ██║██║███████╗███████╗");
-                Console.WriteLine("                ╚═╝   ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚══════╝╚══════╝\r\n");
-                Console.WriteLine();
-                Console.WriteLine("Controls:");
-                Console.WriteLine("A/LeftArrow - Move Left");
-                Console.WriteLine("D/RightArrow - Move Right");
-                Console.WriteLine("W/UpArrow - Rotate");
-                Console.WriteLine("S/DownArrow - Move Down Faster");
-                Console.WriteLine("Spacebar - Hard Drop");
-                Console.WriteLine("Enter - Hold Block");
-                Console.WriteLine("R - Restart");
-                Console.WriteLine();
-                Console.WriteLine("Escape - Quit");
-                Console.WriteLine();
-                Console.WriteLine("Press any key to start...");
+                Console.WriteLine("               ████████╗███████╗████████╗██████╗ ██╗███████╗███████╗                ");
+                Console.WriteLine("               ╚══██╔══╝██╔════╝╚══██╔══╝██╔══██╗██║╚══███╔╝╚══███╔╝                ");
+                Console.WriteLine("                  ██║   █████╗     ██║   ██████╔╝██║  ███╔╝   ███╔╝                 ");
+                Console.WriteLine("                  ██║   ██╔══╝     ██║   ██╔══██╗██║ ███╔╝   ███╔╝                  ");
+                Console.WriteLine("                  ██║   ███████╗   ██║   ██║  ██║██║███████╗███████╗                ");
+                Console.WriteLine("                  ╚═╝   ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚══════╝╚══════╝                ");
+                Console.WriteLine("  ");
+                Console.WriteLine("  ");
+                Console.WriteLine("                             Press any key to start...                              ");
                 Console.ReadKey(true);
 
                 Console.Clear(); // Clear the console again before starting the game
@@ -282,7 +272,7 @@ namespace Tetris
             }
             static void Restart()
             {
-                // Quite messy but it kinda works.
+                // restart the game.
                 var applicationPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
                 Process.Start(applicationPath);
                 Environment.Exit(Environment.ExitCode);
@@ -362,13 +352,13 @@ namespace Tetris
             }
             static Dictionary<int, string> controlInfo = new Dictionary<int, string>
         {
-            { 1, "A/LeftArrow - Left" },
-            { 2, "D/RightArrow - Right" },
-            { 3, "W/UpArrow - Rotate" },
-            { 4, "S/Down - Soft Drop" },
-            { 5, "Space - Hard Drop" },
-            { 6, "Enter - Hold Block" },
-            { 7, "R - Restart" },
+            { 1, "Controls:" },
+            { 2, "       [A] or [←] move left" },
+            { 3, "       [D] or [→] move right" },
+            { 4, "       [S] or [↓] fall faster" },
+            { 5, "       [Spacebar] hard drop " },
+            { 6, "       [Enter] Hold Block" },
+            { 7, "       [R] Restart" },
         };
             static string GetControlChar(int y)
             {
@@ -382,9 +372,8 @@ namespace Tetris
             {
                 // Get the width of the console window
                 int consoleWidth = Console.WindowWidth;
-
-                // Calculate the starting position for the game screen
-                int startX = (consoleWidth - (holdSizeX + mapSizeX + upNextSize + 20)) / 2;
+                int gameScreenWidth = holdSizeX + mapSizeX + upNextSize + 18; // Calculate the width of the game screen
+                int startX = (consoleWidth - gameScreenWidth) / 2; // Calculate the starting X position for the middle
 
                 // Draw the top border
                 Console.SetCursorPosition(startX, Console.CursorTop);
@@ -412,32 +401,28 @@ namespace Tetris
                         // Colours
                         switch (i)
                         {
-                            case 'O':
+                            case '$':
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.Write(i);
                                 break;
-                            case 'I':
+                            case '*':
                                 Console.ForegroundColor = ConsoleColor.Blue;
                                 Console.Write(i);
                                 break;
-                            case 'T':
+                            case '#':
                                 Console.ForegroundColor = ConsoleColor.Cyan;
                                 Console.Write(i);
                                 break;
-                            case 'S':
+                            case '+':
                                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
                                 Console.Write(i);
                                 break;
-                            case 'Z':
+                            case ';':
                                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                                 Console.Write(i);
                                 break;
-                            case 'L':
+                            case '=':
                                 Console.ForegroundColor = ConsoleColor.Green;
-                                Console.Write(i);
-                                break;
-                            case 'J':
-                                Console.ForegroundColor = ConsoleColor.DarkCyan;
                                 Console.Write(i);
                                 break;
                             default:
@@ -555,21 +540,24 @@ namespace Tetris
                 Console.Clear(); // Clear the console
 
 
-                Console.WriteLine("             ██████╗  █████╗ ██    ██╗█████╗");
-                Console.WriteLine("            ██╔════╝ ██╔══██╗███  ███║██╔══╝");
-                Console.WriteLine("            ██║  ███╗███████║██╔██═██║█████╗");
-                Console.WriteLine("            ██║   ██║██╔══██║██║   ██║██╔══╝");
-                Console.WriteLine("            ╚██████╔╝██║  ██║██║   ██║█████╗");
-                Console.WriteLine("             ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝╚════╝");
-                Console.WriteLine("              ██████╗██╗  ██╗█████╗█████╗");
-                Console.WriteLine("              ██  ██║██║  ██║██╔══╝██╔═██╗");
-                Console.WriteLine("              ██  ██║██║  ██║█████╗█████╔╝");
-                Console.WriteLine("              ██  ██║╚██╗██╔╝██╔══╝██╔═██╗");
-                Console.WriteLine("              ██████║ ╚███╔╝ █████╗██║ ██║");
-                Console.WriteLine("              ╚═════╝  ╚══╝  ╚════╝╚═╝ ╚═╝");
-                Console.WriteLine("Score: " + score);
+                Console.WriteLine("             ██████╗  █████╗ ██    ██╗█████╗             ");
+                Console.WriteLine("            ██╔════╝ ██╔══██╗███  ███║██╔══╝             ");
+                Console.WriteLine("            ██║  ███╗███████║██╔██═██║█████╗             ");
+                Console.WriteLine("            ██║   ██║██╔══██║██║   ██║██╔══╝             ");
+                Console.WriteLine("            ╚██████╔╝██║  ██║██║   ██║█████╗             ");
+                Console.WriteLine("             ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝╚════╝             ");
+                Console.WriteLine("              ██████╗██╗  ██╗█████╗█████╗                ");
+                Console.WriteLine("              ██  ██║██║  ██║██╔══╝██╔═██╗               ");
+                Console.WriteLine("              ██  ██║██║  ██║█████╗█████╔╝               ");
+                Console.WriteLine("              ██  ██║╚██╗██╔╝██╔══╝██╔═██╗               ");
+                Console.WriteLine("              ██████║ ╚███╔╝ █████╗██║ ██║               ");
+                Console.WriteLine("              ╚═════╝  ╚══╝  ╚════╝╚═╝ ╚═╝               ");
+                Console.WriteLine("");
+                Console.WriteLine("                 Final Score: " + score);
                 Console.WriteLine();
-                Console.WriteLine("Press 'R' to restart or 'Q' to quit.");
+                Console.WriteLine("                      [R] restart                        ");
+                Console.WriteLine("                      [Q] Quit                           ");
+
                 while (true)
                 {
                     ConsoleKeyInfo key = Console.ReadKey(true);
