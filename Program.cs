@@ -370,7 +370,14 @@ namespace Tetris
             { 6, "Enter - Hold Block" },
             { 7, "R - Restart" },
         };
-
+            static string GetControlChar(int y)
+            {
+                if (controlInfo.TryGetValue(y, out var control))
+                {
+                    return control.PadRight(20); // Pad the string to ensure it takes up 20 characters
+                }
+                return " ".PadRight(20); // If not found, return a padded space
+            }
             static void Print(char[,] view, char[,] hold, char[,] next)
             {
                 // Get the width of the console window
@@ -379,11 +386,22 @@ namespace Tetris
                 // Calculate the starting position for the game screen
                 int startX = (consoleWidth - (holdSizeX + mapSizeX + upNextSize + 20)) / 2;
 
+                // Draw the top border
+                Console.SetCursorPosition(startX, Console.CursorTop);
+                Console.Write("┌");
+                Console.Write(new string('─', holdSizeX + mapSizeX + upNextSize + 18));
+                Console.Write("┐");
+                Console.WriteLine();
+
                 for (int y = 0; y < mapSizeY; y++)
                 {
                     // Set the cursor position for each line based on the calculated starting position
                     Console.SetCursorPosition(startX, Console.CursorTop);
-                    for (int x = 0; x < holdSizeX + mapSizeX + upNextSize + 20; x++)
+
+                    // Draw the left border
+                    Console.Write("│");
+
+                    for (int x = 0; x < holdSizeX + mapSizeX + upNextSize + 18; x++)
                     {
                         char i = ' ';
                         // Add hold + Main View + up next to view 
@@ -435,19 +453,20 @@ namespace Tetris
                         Console.Write("   " + score);
                     }
 
+                    // Draw the right border
+                    Console.Write("│");
                     Console.WriteLine();
                 }
 
+                // Draw the bottom border
+                Console.SetCursorPosition(startX, Console.CursorTop);
+                Console.Write("└");
+                Console.Write(new string('─', holdSizeX + mapSizeX + upNextSize + 18));
+                Console.Write("┘");
+                Console.WriteLine();
+
                 // Reset console cursor position
-                Console.SetCursorPosition(0, Console.CursorTop - mapSizeY);
-            }
-            static string GetControlChar(int y)
-            {
-                if (controlInfo.TryGetValue(y, out var control))
-                {
-                    return control.PadRight(20); // Pad the string to ensure it takes up 20 characters
-                }
-                return " ".PadRight(20); // If not found, return a padded space
+                Console.SetCursorPosition(0, Console.CursorTop - mapSizeY - 2);
             }
             static int[] GenerateBag()
             {
