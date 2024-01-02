@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Diagnostics;
 using System.Media;
@@ -373,8 +373,16 @@ namespace Tetris
 
             static void Print(char[,] view, char[,] hold, char[,] next)
             {
+                // Get the width of the console window
+                int consoleWidth = Console.WindowWidth;
+
+                // Calculate the starting position for the game screen
+                int startX = (consoleWidth - (holdSizeX + mapSizeX + upNextSize + 20)) / 2;
+
                 for (int y = 0; y < mapSizeY; y++)
                 {
+                    // Set the cursor position for each line based on the calculated starting position
+                    Console.SetCursorPosition(startX, Console.CursorTop);
                     for (int x = 0; x < holdSizeX + mapSizeX + upNextSize + 20; x++)
                     {
                         char i = ' ';
@@ -422,11 +430,14 @@ namespace Tetris
                     }
                     if (y == 1)
                     {
+                        Console.SetCursorPosition(startX, Console.CursorTop);
                         Console.ForegroundColor = ConsoleColor.DarkGray;
                         Console.Write("   " + score);
                     }
+
                     Console.WriteLine();
                 }
+
                 // Reset console cursor position
                 Console.SetCursorPosition(0, Console.CursorTop - mapSizeY);
             }
@@ -524,7 +535,7 @@ namespace Tetris
 
                 Console.Clear(); // Clear the console
 
-            
+
                 Console.WriteLine("             ██████╗  █████╗ ██    ██╗█████╗");
                 Console.WriteLine("            ██╔════╝ ██╔══██╗███  ███║██╔══╝");
                 Console.WriteLine("            ██║  ███╗███████║██╔██═██║█████╗");
