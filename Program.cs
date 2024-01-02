@@ -159,12 +159,12 @@ namespace Tetris
                 Console.Clear(); // Clear the console
 
                 // Display game title and information
-                Console.WriteLine("             ██████╗█████╗██████╗█████╗ ██╗█████╗");
-                Console.WriteLine("             ╚═██╔═╝██╔══╝╚═██╔═╝██╔═██╗██║██╔══╝");
-                Console.WriteLine("               ██║  █████╗  ██║  █████╔╝██║ ███╗");
-                Console.WriteLine("               ██║  ██╔══╝  ██║  ██╔═██╗██║   ██╗");
-                Console.WriteLine("               ██║  █████╗  ██║  ██║ ██║██║█████║");
-                Console.WriteLine("               ╚═╝  ╚════╝  ╚═╝  ╚═╝ ╚═╝╚═╝╚════╝\r\n");
+                Console.WriteLine("             ████████╗███████╗████████╗██████╗ ██╗███████╗███████╗");
+                Console.WriteLine("             ╚══██╔══╝██╔════╝╚══██╔══╝██╔══██╗██║╚══███╔╝╚══███╔╝");
+                Console.WriteLine("                ██║   █████╗     ██║   ██████╔╝██║  ███╔╝   ███╔╝ ");
+                Console.WriteLine("                ██║   ██╔══╝     ██║   ██╔══██╗██║ ███╔╝   ███╔╝");
+                Console.WriteLine("                ██║   ███████╗   ██║   ██║  ██║██║███████╗███████╗");
+                Console.WriteLine("                ╚═╝   ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚══════╝╚══════╝\r\n");
                 Console.WriteLine();
                 Console.WriteLine("Controls:");
                 Console.WriteLine("A/LeftArrow - Move Left");
