@@ -98,7 +98,7 @@ namespace Tetris
         };
             #endregion
 
-            static SoundPlayer backgroundMusic; // Declare a SoundPlayer variable
+            static SoundPlayer backgroundMusic;
 
             static void Main()
             {
